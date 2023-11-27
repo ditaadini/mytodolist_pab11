@@ -61,6 +61,7 @@ const BottomNavigator = () => {
       />
     </Tab.Navigator>
   );
+
 };
 
 const App = () => {

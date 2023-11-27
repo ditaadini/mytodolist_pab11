@@ -2,18 +2,17 @@ import { Text, HStack, IconButton, Icon, Box, Checkbox, Pressable } from "native
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const TaskList = (props) => {
-  const { data, onChecked, onDeleted, deletedIcon, onItemPress } = props;
-
-  return (
-    <Pressable onPress={onItemPress}>
-      <Box
-        px={3}
-        py={4}
-        bg={data.isCompleted ? "primary.500" : "#fff"}
-        my="7.5px"
-        borderRadius={5}
-      >
-        <HStack w="100%" justifyContent="space-between" alignItems="center">
+    const { data, onChecked, onDeleted, deletedIcon, onItemPress } = props;
+    return (
+        <Pressable onPress={onItemPress}>
+            <Box
+            px={3}
+            py={4}
+            bg={data.isComplete ? "primary.500" : "#fff"}
+            my="7.5px"
+            borderRadius={5}
+            >
+                <HStack w="100%" justifyContent="space-between" alignItems="center">
           <Checkbox
             isChecked={data.isCompleted}
             onChange={onChecked}
@@ -46,10 +45,10 @@ const TaskList = (props) => {
               onPress={onDeleted}
             />
           )}
-        </HStack>
-      </Box>
-    </Pressable>
-  );
+          </HStack>
+            </Box>
+        </Pressable>
+    );
 };
 
 export default TaskList;

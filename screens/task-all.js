@@ -36,7 +36,10 @@ const TaskScreen = () => {
     setInputValue("");
 
     try {
-      AsyncStorage.setItem("@task-list", JSON.stringify([...list, { title: data, isCompleted: false }]));
+      AsyncStorage.setItem(
+        "@task-list",
+        JSON.stringify([...list, { title: data, isCompleted: false }])
+      );
     } catch (e) {
       console.log("Error add task: in task-all.js");
       console.error(e.message);
@@ -56,12 +59,14 @@ const TaskScreen = () => {
   };
 
   const handleStatusChange = (index) => {
-    const newList = [...list];
-    newList[index].isCompleted = !newList[index].isCompleted;
-    setList(newList);
+    setList((prevList) => {
+      const newList = [...prevList];
+      newList[index].isCompleted = !newList[index].isCompleted;
+      return newList;
+    });
 
     try {
-      AsyncStorage.setItem("@task-list", JSON.stringify(newList));
+      AsyncStorage.setItem("@task-list", JSON.stringify(list));
     } catch (e) {
       console.log("Error update status task: in task-all.js");
       console.error(e.message);
